@@ -9,29 +9,37 @@
 
 </head>
 
-<body class="container">
-    <form action="/projects" method="post">
+<body>
+    <div class="container" id="app">
+        @include('projects.list')
+        <form action="/projects" method="post" @submit.prevent="onSubmit">
 
-        <div class="control">
-            <label for="name" class="label">Project Name:</label>
-            <input type="text" name="name" id="name" class="input">
-        </div>
+            <div class="control">
+                <label for="name" class="label">Project Name:</label>
+                <input type="text" name="name" id="name" class="input" v-model="name">
 
-        <div class="control mb-3">
-            <label for="description" class="label">Project Description:</label>
-            <input type="text" name="description" id="description" class="input">
-        </div>
+                <span class="help is-danger" v-text="errors['name']? errors['name'][0]: ''"></span>
 
-        <div class="control">
-            <button class="button is-primary">Create</button>
-        </div>
+            </div>
 
-    </form>
+            <div class="control mb-3">
+                <label for="description" class="label">Project Description:</label>
+                <input type="text" name="description" id="description" class="input" v-model="description">
 
+                <span class="help is-danger" v-text="errors['description']? errors['description'][0]: ''"></span>
+            </div>
+
+            <div class="control">
+                <button class="button is-primary">Create</button>
+            </div>
+
+        </form>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="/js/app.js"></script>
-</body>
 
+</body>
 
 </html>
