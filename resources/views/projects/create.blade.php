@@ -12,13 +12,13 @@
 <body>
     <div class="container" id="app">
         @include('projects.list')
-        <form action="/projects" method="post" @submit.prevent="onSubmit">
+        <form action="/projects" method="post" @submit.prevent="onSubmit" @keydown="delete errors[$event.target.name]">
 
             <div class="control">
                 <label for="name" class="label">Project Name:</label>
                 <input type="text" name="name" id="name" class="input" v-model="name">
 
-                <span class="help is-danger" v-text="errors['name']? errors['name'][0]: ''"></span>
+                <span class="help is-danger" v-if="errors['name']" v-text="errors['name']? errors['name'][0]: ''"></span>
 
             </div>
 
@@ -26,11 +26,11 @@
                 <label for="description" class="label">Project Description:</label>
                 <input type="text" name="description" id="description" class="input" v-model="description">
 
-                <span class="help is-danger" v-text="errors['description']? errors['description'][0]: ''"></span>
+                <span class="help is-danger" v-if="errors['description']" v-text="errors['description']? errors['description'][0]: ''"></span>
             </div>
 
             <div class="control">
-                <button class="button is-primary">Create</button>
+                <button class="button is-primary" :disabled="Object.keys(errors).length === 0 && errors.constructor === Object?false:true">Create</button>
             </div>
 
         </form>

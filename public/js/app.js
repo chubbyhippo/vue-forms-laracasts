@@ -7,6 +7,7 @@ new Vue({
     },
     methods: {
         onSubmit() {
+            console.log(this.errors);
             axios
                 .post("/projects", this.$data)
                 .then(response => alert("Success"))
