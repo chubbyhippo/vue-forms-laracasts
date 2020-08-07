@@ -17,7 +17,7 @@
             <input type="text" name="name" id="name" class="input">
         </div>
 
-        <div class="control">
+        <div class="control mb-3">
             <label for="description" class="label">Project Description:</label>
             <input type="text" name="description" id="description" class="input">
         </div>
@@ -28,7 +28,7 @@
 
     </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="/js/app.js"></script>
 </body>
